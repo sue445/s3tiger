@@ -15,7 +15,7 @@ import org.slim3.util.AppEngineUtil;
 
 
 @RunWith(Slim3.class)
-public class IgnoreJUnitMethodTest {
+public class IgnoreMethodTest {
 
 	@IgnoreJUnit
 	@Test

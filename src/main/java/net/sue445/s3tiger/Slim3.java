@@ -1,5 +1,6 @@
 package net.sue445.s3tiger;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sue445.s3tiger.inner.IgnoreType;
@@ -14,24 +15,12 @@ import org.junit.runners.model.InitializationError;
 public class Slim3 extends BlockJUnit4ClassRunner {
 	private static final Logger log = Logger.getLogger(Slim3.class.getName());
 
+	private final boolean isClassIgnore;
+
+
 	public Slim3(Class<?> klass) throws InitializationError {
 		super(klass);
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void run(RunNotifier notifier) {
-		if(isClassIgnore()){
-			log.info("ignore");
-			//notifier.fireTestIgnored(Description.EMPTY);
-			return;
-		}
-		log.info("run");
-
-		super.run(notifier);
+		this.isClassIgnore = isClassIgnore();
 	}
 
 	private boolean isClassIgnore(){
@@ -45,13 +34,13 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
-		if(isMethodIgnore(method)){
-			log.info("ignore");
+		if(isClassIgnore || isMethodIgnore(method)){
 			EachTestNotifier eachNotifier= makeNotifier(method, notifier);
-			eachNotifier.fireTestIgnored();
+			eachNotifier.fireTestStarted();
+			eachNotifier.fireTestFinished();
+			log.log(Level.FINE, "ignored");
 			return;
 		}
-		log.info("run");
 
 		super.runChild(method, notifier);
 	}
