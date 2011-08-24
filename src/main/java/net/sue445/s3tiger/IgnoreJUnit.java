@@ -1,4 +1,4 @@
-package net.sue445.s3junit4;
+package net.sue445.s3tiger;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,6 +1,9 @@
-package net.sue445.s3junit4;
+package net.sue445.s3tiger;
 
 import static org.junit.Assert.*;
+
+import net.sue445.s3tiger.IgnoreProduction;
+import net.sue445.s3tiger.Slim3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

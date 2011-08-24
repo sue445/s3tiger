@@ -1,8 +1,8 @@
-package net.sue445.s3junit4;
+package net.sue445.s3tiger;
 
 import java.util.logging.Logger;
 
-import net.sue445.s3junit4.inner.IgnoreType;
+import net.sue445.s3tiger.inner.IgnoreType;
 
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.Description;

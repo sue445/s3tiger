@@ -1,10 +1,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
-  
+
     <context-param>
         <param-name>slim3.rootPackage</param-name>
-        <param-value>net.sue445.s3junit4</param-value>
+        <param-value>net.sue445.s3tiger</param-value>
     </context-param>
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
@@ -22,7 +22,7 @@
     <filter>
         <filter-name>DatastoreFilter</filter-name>
         <filter-class>org.slim3.datastore.DatastoreFilter</filter-class>
-    </filter>   
+    </filter>
     <filter>
         <filter-name>FrontController</filter-name>
         <filter-class>org.slim3.controller.FrontController</filter-class>
@@ -32,7 +32,7 @@
         <filter-name>HotReloadingFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>    
+    </filter-mapping>
     <filter-mapping>
         <filter-name>DatastoreFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -46,13 +46,13 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    
+
     <servlet>
         <servlet-name>GlobalTransactionServlet</servlet-name>
         <servlet-class>org.slim3.datastore.GlobalTransactionServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    
+
     <!--
     <servlet>
         <servlet-name>GWTServiceServlet</servlet-name>
@@ -60,29 +60,29 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     -->
-      
+
     <servlet-mapping>
         <servlet-name>GlobalTransactionServlet</servlet-name>
         <url-pattern>/slim3/gtx</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>KtrWjrServiceServlet</servlet-name>
         <servlet-class>bufferings.ktr.wjr.server.service.KtrWjrServiceServlet</servlet-class>
     </servlet>
-  
+
     <!--
     <servlet-mapping>
         <servlet-name>GWTServiceServlet</servlet-name>
         <url-pattern>*.s3gwt</url-pattern>
     </servlet-mapping>
     -->
-    
+
     <servlet-mapping>
         <servlet-name>KtrWjrServiceServlet</servlet-name>
         <url-pattern>/ktrwjr/ktrwjr/ktrwjr.s3gwt</url-pattern>
     </servlet-mapping>
-  
+
     <security-constraint>
         <web-resource-collection>
             <url-pattern>*.jsp</url-pattern>

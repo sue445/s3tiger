@@ -1,14 +1,15 @@
-package net.sue445.s3junit4.inner;
+package net.sue445.s3tiger.inner;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Method;
 
-import net.sue445.s3junit4.IgnoreDevelopment;
-import net.sue445.s3junit4.IgnoreJUnit;
-import net.sue445.s3junit4.IgnoreProduction;
-import net.sue445.s3junit4.IgnoreServer;
+import net.sue445.s3tiger.IgnoreDevelopment;
+import net.sue445.s3tiger.IgnoreJUnit;
+import net.sue445.s3tiger.IgnoreProduction;
+import net.sue445.s3tiger.IgnoreServer;
+import net.sue445.s3tiger.inner.IgnoreType;
 
 import org.junit.Test;
 

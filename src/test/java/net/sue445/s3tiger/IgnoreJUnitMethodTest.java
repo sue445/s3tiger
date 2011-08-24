@@ -1,6 +1,12 @@
-package net.sue445.s3junit4;
+package net.sue445.s3tiger;
 
 import static org.junit.Assert.*;
+
+import net.sue445.s3tiger.IgnoreDevelopment;
+import net.sue445.s3tiger.IgnoreJUnit;
+import net.sue445.s3tiger.IgnoreProduction;
+import net.sue445.s3tiger.IgnoreServer;
+import net.sue445.s3tiger.Slim3;
 
 import org.junit.Ignore;
 import org.junit.Test;
