@@ -6,10 +6,9 @@ import static org.junit.Assert.*;
 import java.lang.reflect.Method;
 
 import net.sue445.s3tiger.IgnoreDevelopment;
-import net.sue445.s3tiger.IgnoreJUnit;
+import net.sue445.s3tiger.IgnoreNotServer;
 import net.sue445.s3tiger.IgnoreProduction;
 import net.sue445.s3tiger.IgnoreServer;
-import net.sue445.s3tiger.inner.IgnoreType;
 
 import org.junit.Test;
 
@@ -46,12 +45,12 @@ public class IgnoreTypeTest {
 	}
 
 	@Test
-	public void toEnumClass_JUnit() throws Exception {
-		assertThat(IgnoreType.toEnum(IgnoreJUnitClass.class), is(IgnoreType.JUNIT));
+	public void toEnumClass_NotServer() throws Exception {
+		assertThat(IgnoreType.toEnum(IgnoreNotServerClass.class), is(IgnoreType.NOT_SERVER));
 	}
 
-	@IgnoreJUnit
-	private static class IgnoreJUnitClass{
+	@IgnoreNotServer
+	private static class IgnoreNotServerClass{
 
 	}
 
@@ -77,8 +76,8 @@ public class IgnoreTypeTest {
 		public void server(){
 		}
 
-		@IgnoreJUnit
-		public void junit(){
+		@IgnoreNotServer
+		public void notServer(){
 		}
 
 		public void notIgnore(){
@@ -104,11 +103,10 @@ public class IgnoreTypeTest {
 	}
 
 	@Test
-	public void toEnumMethod_JUnit() throws Exception {
-		Method method = IgnoreMethodClass.class.getMethod("junit");
-		assertThat(IgnoreType.toEnum(method), is(IgnoreType.JUNIT));
+	public void toEnumMethod_NotServer() throws Exception {
+		Method method = IgnoreMethodClass.class.getMethod("notServer");
+		assertThat(IgnoreType.toEnum(method), is(IgnoreType.NOT_SERVER));
 	}
-
 	@Test
 	public void toEnumMethod_NotIgnore() throws Exception {
 		Method method = IgnoreMethodClass.class.getMethod("notIgnore");

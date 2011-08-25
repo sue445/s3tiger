@@ -7,14 +7,14 @@ import org.junit.runner.RunWith;
 import org.slim3.util.AppEngineUtil;
 
 
-@IgnoreJUnit
+@IgnoreNotServer
 @RunWith(Slim3.class)
-public class IgnoreJUnitClassTest {
+public class IgnoreNotServerClassTest {
 
 	@Test
 	public void test() throws Exception {
 		if(!AppEngineUtil.isServer()){
-			fail("this test class is ignored on JUnit");
+			fail("this test class is ignored on NotServer");
 		}
 	}
 }

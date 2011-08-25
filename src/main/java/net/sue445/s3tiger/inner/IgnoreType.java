@@ -3,7 +3,7 @@ package net.sue445.s3tiger.inner;
 import java.lang.reflect.Method;
 
 import net.sue445.s3tiger.IgnoreDevelopment;
-import net.sue445.s3tiger.IgnoreJUnit;
+import net.sue445.s3tiger.IgnoreNotServer;
 import net.sue445.s3tiger.IgnoreProduction;
 import net.sue445.s3tiger.IgnoreServer;
 
@@ -13,7 +13,7 @@ public enum IgnoreType {
 	PRODUCTION(Strategy.PRODUCTION),
 	DEVELOPMENT(Strategy.DEVELOPMENT),
 	SERVER(Strategy.SERVER),
-	JUNIT(Strategy.JUNIT),
+	NOT_SERVER(Strategy.NOT_SERVER),
 	NOT_IGNORE(Strategy.NOT_IGNORE),
 	;
 
@@ -27,40 +27,47 @@ public enum IgnoreType {
 		return strategy.isIgnore();
 	}
 
+	public boolean isCurrentEnvironment() {
+		return strategy.isCurrentEnvironment();
+	}
+
 	private enum Strategy{
 		PRODUCTION{
 			@Override
-			boolean isIgnore() {
+			boolean isCurrentEnvironment() {
 				return AppEngineUtil.isProduction();
 			}
 		},
 		DEVELOPMENT{
 			@Override
-			boolean isIgnore() {
+			boolean isCurrentEnvironment() {
 				return AppEngineUtil.isDevelopment();
 			}
 		},
 		SERVER{
 			@Override
-			boolean isIgnore() {
+			boolean isCurrentEnvironment() {
 				return AppEngineUtil.isServer();
 			}
 		},
-		JUNIT{
+		NOT_SERVER{
 			@Override
-			boolean isIgnore() {
+			boolean isCurrentEnvironment() {
 				return !AppEngineUtil.isServer();
 			}
 		},
 		NOT_IGNORE{
 			@Override
-			boolean isIgnore() {
+			boolean isCurrentEnvironment() {
 				return false;
 			}
 		},
 		;
 
-		abstract boolean isIgnore();
+		abstract boolean isCurrentEnvironment();
+		private boolean isIgnore(){
+			return isCurrentEnvironment();
+		}
 	}
 
 	/**
@@ -78,8 +85,8 @@ public enum IgnoreType {
 		if(clazz.getAnnotation(IgnoreServer.class) != null){
 			return SERVER;
 		}
-		if(clazz.getAnnotation(IgnoreJUnit.class) != null){
-			return JUNIT;
+		if(clazz.getAnnotation(IgnoreNotServer.class) != null){
+			return NOT_SERVER;
 		}
 		return NOT_IGNORE;
 	}
@@ -99,8 +106,8 @@ public enum IgnoreType {
 		if(method.getAnnotation(IgnoreServer.class) != null){
 			return SERVER;
 		}
-		if(method.getAnnotation(IgnoreJUnit.class) != null){
-			return JUNIT;
+		if(method.getAnnotation(IgnoreNotServer.class) != null){
+			return NOT_SERVER;
 		}
 		return NOT_IGNORE;
 	}
