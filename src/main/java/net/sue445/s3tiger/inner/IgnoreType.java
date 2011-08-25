@@ -1,6 +1,8 @@
 package net.sue445.s3tiger.inner;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.sue445.s3tiger.IgnoreDevelopment;
 import net.sue445.s3tiger.IgnoreNotServer;
@@ -14,7 +16,6 @@ public enum IgnoreType {
 	DEVELOPMENT(Strategy.DEVELOPMENT),
 	SERVER(Strategy.SERVER),
 	NOT_SERVER(Strategy.NOT_SERVER),
-	NOT_IGNORE(Strategy.NOT_IGNORE),
 	;
 
 	private final Strategy strategy;
@@ -56,59 +57,60 @@ public enum IgnoreType {
 				return !AppEngineUtil.isServer();
 			}
 		},
-		NOT_IGNORE{
-			@Override
-			boolean isCurrentEnvironment() {
-				return false;
-			}
-		},
 		;
 
 		abstract boolean isCurrentEnvironment();
+
 		private boolean isIgnore(){
 			return isCurrentEnvironment();
 		}
 	}
 
 	/**
-	 * get {@link IgnoreType} from class
+	 * get {@link IgnoreType}s from class
 	 * @param clazz
-	 * @return a IgnoreType. if no ignore annotation, return {@link IgnoreType#NOT_IGNORE}.
+	 * @return
 	 */
-	public static IgnoreType toEnum(Class<?> clazz){
+	public static List<IgnoreType> toEnum(Class<?> clazz){
+		List<IgnoreType> result = new ArrayList<IgnoreType>();
+
 		if(clazz.getAnnotation(IgnoreProduction.class) != null){
-			return PRODUCTION;
+			result.add(PRODUCTION);
 		}
 		if(clazz.getAnnotation(IgnoreDevelopment.class) != null){
-			return DEVELOPMENT;
+			result.add(DEVELOPMENT);
 		}
 		if(clazz.getAnnotation(IgnoreServer.class) != null){
-			return SERVER;
+			result.add(SERVER);
 		}
 		if(clazz.getAnnotation(IgnoreNotServer.class) != null){
-			return NOT_SERVER;
+			result.add(NOT_SERVER);
 		}
-		return NOT_IGNORE;
+
+		return result;
 	}
 
 	/**
-	 * get {@link IgnoreType} from method
+	 * get {@link IgnoreType}s from method
 	 * @param method
-	 * @return a IgnoreType. if no ignore annotation, return {@link IgnoreType#NOT_IGNORE}.
+	 * @return
 	 */
-	public static IgnoreType toEnum(Method method){
+	public static List<IgnoreType> toEnum(Method method){
+		List<IgnoreType> result = new ArrayList<IgnoreType>();
+
 		if(method.getAnnotation(IgnoreProduction.class) != null){
-			return PRODUCTION;
+			result.add(PRODUCTION);
 		}
 		if(method.getAnnotation(IgnoreDevelopment.class) != null){
-			return DEVELOPMENT;
+			result.add(DEVELOPMENT);
 		}
 		if(method.getAnnotation(IgnoreServer.class) != null){
-			return SERVER;
+			result.add(SERVER);
 		}
 		if(method.getAnnotation(IgnoreNotServer.class) != null){
-			return NOT_SERVER;
+			result.add(NOT_SERVER);
 		}
-		return NOT_IGNORE;
+
+		return result;
 	}
 }

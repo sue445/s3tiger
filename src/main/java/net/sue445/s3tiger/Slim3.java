@@ -1,5 +1,6 @@
 package net.sue445.s3tiger;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,15 +19,24 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	private final boolean isClassIgnore;
 
 
+	/**
+	 *
+	 * @param klass
+	 * @throws InitializationError
+	 */
 	public Slim3(Class<?> klass) throws InitializationError {
 		super(klass);
 		this.isClassIgnore = isClassIgnore();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	private boolean isClassIgnore(){
 		Class<?> javaClass = super.getTestClass().getJavaClass();
-		IgnoreType ignoreType = IgnoreType.toEnum(javaClass);
-		return ignoreType.isIgnore();
+		List<IgnoreType> ignoreTypes = IgnoreType.toEnum(javaClass);
+		return hasCurrentEnvironment(ignoreTypes);
 	}
 
 	/**
@@ -45,15 +55,39 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 		super.runChild(method, notifier);
 	}
 
+	/**
+	 *
+	 * @param method
+	 * @return
+	 */
 	private boolean isMethodIgnore(FrameworkMethod method){
-		IgnoreType ignoreType = IgnoreType.toEnum(method.getMethod());
-		return ignoreType.isIgnore();
+		List<IgnoreType> ignoreTypes = IgnoreType.toEnum(method.getMethod());
+		return hasCurrentEnvironment(ignoreTypes);
 	}
 
+	/**
+	 *
+	 * @param method
+	 * @param notifier
+	 * @return
+	 */
 	private EachTestNotifier makeNotifier(FrameworkMethod method, RunNotifier notifier) {
 		Description description= describeChild(method);
 		return new EachTestNotifier(notifier, description);
 	}
 
+	/**
+	 *
+	 * @param ignoreTypes
+	 * @return
+	 */
+	protected static boolean hasCurrentEnvironment(List<IgnoreType> ignoreTypes){
+		for(IgnoreType ignore : ignoreTypes){
+			if(ignore.isCurrentEnvironment()){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

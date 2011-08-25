@@ -11,6 +11,12 @@ import org.slim3.util.AppEngineUtil;
 @RunWith(Slim3.class)
 public class IgnoreMethodTest {
 
+	@Ignore
+	@Test
+	public void testIgnore() throws Exception {
+		fail("this test class is ignored");
+	}
+
 	@IgnoreNotServer
 	@Test
 	public void testIgnoreNotServer() throws Exception {
@@ -43,9 +49,16 @@ public class IgnoreMethodTest {
 		}
 	}
 
-	@Ignore
+	@IgnoreProduction
+	@IgnoreNotServer
 	@Test
-	public void testIgnore() throws Exception {
-		fail("this test class is ignored");
+	public void testIgnoreProductionAndNotServer() throws Exception {
+		if(AppEngineUtil.isProduction()){
+			fail("this test class is ignored on production server.");
+		}
+		if(!AppEngineUtil.isServer()){
+			fail("this test class is ignored on production not server.");
+		}
 	}
+
 }

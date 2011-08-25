@@ -3,12 +3,16 @@ package net.sue445.s3tiger;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import net.sue445.s3tiger.Slim3;
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sue445.s3tiger.inner.IgnoreType;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slim3.util.AppEngineUtil;
 
 @RunWith(Slim3.class)
 public class Slim3Test {
@@ -39,7 +43,16 @@ public class Slim3Test {
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void hasCurrentEnvironment_Contains() throws Exception {
+		if(AppEngineUtil.isServer()){
+			return;
+		}
 
+		List<IgnoreType> list = new ArrayList<IgnoreType>();
+		list.add(IgnoreType.DEVELOPMENT);
+		list.add(IgnoreType.NOT_SERVER);
+		assertThat(Slim3.hasCurrentEnvironment(list), is(true));
 	}
+
+
 }
