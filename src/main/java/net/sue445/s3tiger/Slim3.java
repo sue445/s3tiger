@@ -1,9 +1,11 @@
 package net.sue445.s3tiger;
 
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.sue445.s3tiger.inner.AppEngineWebConfigUtil;
 import net.sue445.s3tiger.inner.IgnoreType;
 
 import org.junit.internal.runners.model.EachTestNotifier;
@@ -12,6 +14,7 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.slim3.util.AppEngineUtil;
 
 public class Slim3 extends BlockJUnit4ClassRunner {
 	private static final Logger log = Logger.getLogger(Slim3.class.getName());
@@ -52,7 +55,22 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 			return;
 		}
 
-		super.runChild(method, notifier);
+		Properties beforeSystemProperties = null;
+
+		if(!AppEngineUtil.isServer()){
+			beforeSystemProperties = (Properties) System.getProperties().clone();
+			System.getProperties().putAll(AppEngineWebConfigUtil.getSystemProperties());
+		}
+
+		try{
+			super.runChild(method, notifier);
+
+		} finally {
+			if(beforeSystemProperties != null){
+				System.getProperties().clear();
+				System.getProperties().putAll(beforeSystemProperties);
+			}
+		}
 	}
 
 	/**

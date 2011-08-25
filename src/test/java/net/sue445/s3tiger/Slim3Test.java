@@ -54,5 +54,9 @@ public class Slim3Test {
 		assertThat(Slim3.hasCurrentEnvironment(list), is(true));
 	}
 
+	@Test
+	public void containsSystemProperties(){
+		assertThat(System.getProperty("java.util.logging.config.file"), is("WEB-INF/classes/logging.properties"));
+	}
 
 }
