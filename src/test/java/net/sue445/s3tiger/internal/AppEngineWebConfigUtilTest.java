@@ -1,9 +1,11 @@
-package net.sue445.s3tiger.inner;
+package net.sue445.s3tiger.internal;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.util.Map;
+
+import net.sue445.s3tiger.internal.AppEngineWebConfigUtil;
 
 import org.junit.Test;
 import org.slim3.tester.AppEngineTestCase;

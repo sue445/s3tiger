@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sue445.s3tiger.inner.IgnoreType;
+import net.sue445.s3tiger.internal.IgnoreType;
 
 import org.junit.Before;
 import org.junit.BeforeClass;

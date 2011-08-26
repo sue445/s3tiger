@@ -1,4 +1,4 @@
-package net.sue445.s3tiger.inner;
+package net.sue445.s3tiger.internal;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

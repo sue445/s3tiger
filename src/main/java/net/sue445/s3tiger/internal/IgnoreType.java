@@ -1,4 +1,4 @@
-package net.sue445.s3tiger.inner;
+package net.sue445.s3tiger.internal;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

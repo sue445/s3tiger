@@ -1,4 +1,4 @@
-package net.sue445.s3tiger.inner;
+package net.sue445.s3tiger.internal;
 
 import static org.junit.Assert.*;
 import static org.junit.matchers.JUnitMatchers.*;
@@ -9,6 +9,7 @@ import net.sue445.s3tiger.IgnoreDevelopment;
 import net.sue445.s3tiger.IgnoreNotServer;
 import net.sue445.s3tiger.IgnoreProduction;
 import net.sue445.s3tiger.IgnoreServer;
+import net.sue445.s3tiger.internal.IgnoreType;
 
 import org.junit.Test;
 

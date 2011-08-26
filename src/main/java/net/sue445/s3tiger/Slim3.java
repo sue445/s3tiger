@@ -5,8 +5,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sue445.s3tiger.inner.AppEngineWebConfigUtil;
-import net.sue445.s3tiger.inner.IgnoreType;
+import net.sue445.s3tiger.internal.AppEngineWebConfigUtil;
+import net.sue445.s3tiger.internal.IgnoreType;
 
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.Description;
