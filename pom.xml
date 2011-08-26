@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.sue445</groupId>
   <artifactId>s3tiger</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <slim3.version>1.0.13</slim3.version>
@@ -108,9 +108,20 @@
     -->
   </dependencies>
   <build>
-    <finalName>slim3-maven</finalName>
-    <outputDirectory>${generated.war}/WEB-INF/classes</outputDirectory>
-    <testOutputDirectory>${generated.war}/WEB-INF/classes</testOutputDirectory>
+    <finalName>${artifactId}-${version}</finalName>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>logging.properties</exclude>
+        </excludes>
+      </resource>
+    </resources>
     <pluginManagement>
       <plugins>
         <plugin>
