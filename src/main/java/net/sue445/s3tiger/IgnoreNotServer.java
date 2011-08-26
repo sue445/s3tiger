@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * igonore testcace if this application is running on JUnit.
+ * igonore testcace if this application is running on not server.
  * @author sue445
  *
  */

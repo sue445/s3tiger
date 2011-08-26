@@ -7,11 +7,16 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.slim3.tester.AppEngineTestCase;
+import org.slim3.util.AppEngineUtil;
 
 public class AppEngineWebConfigUtilTest extends AppEngineTestCase{
 
 	@Test
 	public void getSystemProperties() {
+		if(AppEngineUtil.isServer()){
+			return;
+		}
+
 		Map<String, String> actual = AppEngineWebConfigUtil.getSystemProperties();
 
 		assertThat(actual.size(), is(1));
