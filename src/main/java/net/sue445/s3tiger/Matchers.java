@@ -1,6 +1,10 @@
-package net.sue445.s3tiger.matcher;
+package net.sue445.s3tiger;
 
 import java.util.Comparator;
+
+import net.sue445.s3tiger.matcher.ComparableOrderMatcher;
+import net.sue445.s3tiger.matcher.EmptyStringMatcher;
+import net.sue445.s3tiger.matcher.OrderMatcher;
 
 import org.hamcrest.Matcher;
 

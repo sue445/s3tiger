@@ -1,6 +1,6 @@
 package net.sue445.s3tiger;
 
-import static net.sue445.s3tiger.matcher.Matchers.*;
+import static net.sue445.s3tiger.Matchers.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
