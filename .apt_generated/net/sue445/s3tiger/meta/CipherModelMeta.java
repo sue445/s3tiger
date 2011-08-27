@@ -1,6 +1,6 @@
 package net.sue445.s3tiger.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-08-27 16:24:22")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2011-08-27 17:12:25")
 /** */
 public final class CipherModelMeta extends org.slim3.datastore.ModelMeta<net.sue445.s3tiger.model.CipherModel> {
 
