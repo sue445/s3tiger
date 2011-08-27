@@ -13,9 +13,11 @@
 	<property name="classpath" refid="project.classpath"/>
 
 	<target name="info">
+		<echo message="groupId=${groupId}"/>
 		<echo message="artifactId=${artifactId}"/>
 		<echo message="ver=${ver}"/>
 		<echo message="srcDir=${srcDir}"/>
+		<echo message="libDir=${libDir}"/>
 		<echo message="buildDir=${buildDir}"/>
 		<echo message="classDir=${classDir}"/>
 		<echo message="classpath=${classpath}"/>
@@ -38,4 +40,14 @@
 		<jar jarfile="${buildDir}/${artifactId}-${version}-sources.jar" basedir="${srcDir}"/>
 	</target>
 
+	<target name="install_to_maven" depends="dist">
+		<exec executable="mvn">
+			<arg value="install:install-file"/>
+			<arg value="-DgroupId=${groupId}"/>
+			<arg value="-DartifactId=${artifactId}"/>
+			<arg value="-Dversion=${version}"/>
+			<arg value="-Dpackaging=jar"/>
+			<arg value="-Dfile=${buildDir}/${artifactId}-${version}.jar"/>
+		</exec>
+	</target>
 </project>
