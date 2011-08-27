@@ -24,24 +24,18 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- *　XPathをラップして使用するクラス
+ * wrapping XPath
  * via {@link http://d.hatena.ne.jp/int128/20100126/1264437133}
  * @author int128
  *
  */
 public class XPathEvaluator {
-	/**
-	 * MapのKey
-	 */
-	private static String MAP_KEY = "name";
+	private static String PROPERTIES_NAME = "name";
 
-	/**
-	 * MapのValue
-	 */
-	private static String MAP_VALUE = "value";
-
+	private static String PROPERTIES_VALUE = "value";
 
 	private final Document document;
+
 	private final XPath xpath;
 
 	/**
@@ -163,7 +157,7 @@ public class XPathEvaluator {
 	 * @param variableMap
 	 * @return
 	 */
-	public Map<String, String> getMap(String expression, Map<QName, Object> variableMap){
+	public Map<String, String> getProperties(String expression, Map<QName, Object> variableMap){
 		if(variableMap != null && variableMap.size() > 0){
 			setVariable(variableMap);
 		}
@@ -176,8 +170,8 @@ public class XPathEvaluator {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 		for(Node node : nodeList){
 			NamedNodeMap attr = node.getAttributes();
-			String key   = attr.getNamedItem(MAP_KEY).getNodeValue();
-			String value = attr.getNamedItem(MAP_VALUE).getNodeValue();
+			String key   = attr.getNamedItem(PROPERTIES_NAME).getNodeValue();
+			String value = attr.getNamedItem(PROPERTIES_VALUE).getNodeValue();
 			map.put(key, value);
 		}
 

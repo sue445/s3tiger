@@ -35,7 +35,7 @@ public final class AppEngineWebConfigUtil {
 				new Callback<Map<String, String>>() {
 					@Override
 					public Map<String, String> execute(XPathEvaluator evalutor) {
-						return evalutor.getMap(XPATH_SYSTEM_PROPERTIES, null);
+						return evalutor.getProperties(XPATH_SYSTEM_PROPERTIES, null);
 					}
 				});
 	}
