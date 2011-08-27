@@ -48,6 +48,7 @@
 			<arg value="-Dversion=${version}"/>
 			<arg value="-Dpackaging=jar"/>
 			<arg value="-Dfile=${buildDir}/${artifactId}-${version}.jar"/>
+			<arg value="-DgeneratePom=true"/>
 		</exec>
 	</target>
 </project>
