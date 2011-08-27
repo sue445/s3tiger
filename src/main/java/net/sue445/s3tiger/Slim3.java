@@ -16,6 +16,15 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.slim3.util.AppEngineUtil;
 
+/**
+ * Slim3 runner
+ * <ul>
+ * <li>using {@link IgnoreProduction}, {@link IgnoreDevelopment}, {@link IgnoreServer}, {@link IgnoreNotServer} </li>
+ * <li>when run on not server, read &lt;system-properties&gt; from appengine-web.xml </li>
+ * </ul>
+ * @author sue445
+ *
+ */
 public class Slim3 extends BlockJUnit4ClassRunner {
 	private static final Logger log = Logger.getLogger(Slim3.class.getName());
 

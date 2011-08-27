@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 
 import java.util.Map;
 
-import net.sue445.s3tiger.internal.AppEngineWebConfigUtil;
-
 import org.junit.Test;
 import org.slim3.tester.AppEngineTestCase;
 import org.slim3.util.AppEngineUtil;
@@ -21,11 +19,15 @@ public class AppEngineWebConfigUtilTest extends AppEngineTestCase{
 
 		Map<String, String> actual = AppEngineWebConfigUtil.getSystemProperties();
 
-		assertThat(actual.size(), is(1));
+		assertThat(actual.size(), is(2));
 
-		String key = "java.util.logging.config.file";
+		assertHasMapEntry(actual, "java.util.logging.config.file", "WEB-INF/classes/logging.properties");
+		assertHasMapEntry(actual, "slim3.cipherGlobalKey", "1234567890123456");
+	}
+
+	private <K, V> void assertHasMapEntry(Map<K, V> actual, K key, V value) {
 		assertThat(actual.containsKey(key), is(true));
-		assertThat(actual.get(key), is("WEB-INF/classes/logging.properties"));
+		assertThat(actual.get(key), is(value));
 	}
 
 }
