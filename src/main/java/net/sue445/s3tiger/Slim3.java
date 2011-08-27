@@ -36,7 +36,7 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	 *
 	 * @return
 	 */
-	private boolean isClassIgnore(){
+	protected boolean isClassIgnore(){
 		Class<?> javaClass = super.getTestClass().getJavaClass();
 		List<IgnoreType> ignoreTypes = IgnoreType.toEnum(javaClass);
 		return hasCurrentEnvironment(ignoreTypes);
@@ -48,28 +48,55 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	@Override
 	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
 		if(isClassIgnore || isMethodIgnore(method)){
-			EachTestNotifier eachNotifier= makeNotifier(method, notifier);
-			eachNotifier.fireTestStarted();
-			eachNotifier.fireTestFinished();
-			log.log(Level.FINE, "ignored");
+			skipTestMethod(method, notifier);
 			return;
 		}
 
-		Properties beforeSystemProperties = null;
-
-		if(!AppEngineUtil.isServer()){
-			beforeSystemProperties = (Properties) System.getProperties().clone();
-			System.getProperties().putAll(AppEngineWebConfigUtil.getSystemProperties());
-		}
+		Properties originalSystemProperties = setUpSystemProperties();
 
 		try{
 			super.runChild(method, notifier);
 
 		} finally {
-			if(beforeSystemProperties != null){
-				System.getProperties().clear();
-				System.getProperties().putAll(beforeSystemProperties);
-			}
+			tearDownSystemProperties(originalSystemProperties);
+		}
+	}
+
+	/**
+	 *
+	 * @param method
+	 * @param notifier
+	 */
+	protected void skipTestMethod(FrameworkMethod method, RunNotifier notifier) {
+		EachTestNotifier eachNotifier= makeNotifier(method, notifier);
+		eachNotifier.fireTestStarted();
+		eachNotifier.fireTestFinished();
+		log.log(Level.FINE, "ignored");
+	}
+
+	/**
+	 * read system properties from appengine-web.xml
+	 * @return original system properties
+	 */
+	protected Properties setUpSystemProperties() {
+		if(AppEngineUtil.isServer()){
+			return null;
+
+		} else{
+			Properties originalSystemProperties = (Properties) System.getProperties().clone();
+			System.getProperties().putAll(AppEngineWebConfigUtil.getSystemProperties());
+			return originalSystemProperties;
+		}
+	}
+
+	/**
+	 *
+	 * @param originalSystemProperties
+	 */
+	protected void tearDownSystemProperties(Properties originalSystemProperties) {
+		if(originalSystemProperties != null){
+			System.getProperties().clear();
+			System.getProperties().putAll(originalSystemProperties);
 		}
 	}
 
@@ -78,7 +105,7 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	 * @param method
 	 * @return
 	 */
-	private boolean isMethodIgnore(FrameworkMethod method){
+	protected boolean isMethodIgnore(FrameworkMethod method){
 		List<IgnoreType> ignoreTypes = IgnoreType.toEnum(method.getMethod());
 		return hasCurrentEnvironment(ignoreTypes);
 	}
@@ -89,7 +116,7 @@ public class Slim3 extends BlockJUnit4ClassRunner {
 	 * @param notifier
 	 * @return
 	 */
-	private EachTestNotifier makeNotifier(FrameworkMethod method, RunNotifier notifier) {
+	protected EachTestNotifier makeNotifier(FrameworkMethod method, RunNotifier notifier) {
 		Description description= describeChild(method);
 		return new EachTestNotifier(notifier, description);
 	}
