@@ -34,8 +34,8 @@
 	</target>
 
 	<target name="dist" depends="info,clean,compile">
-		<jar jarfile="${buildDir}/${artifactId}-${ver}.jar" basedir="${classDir}"/>
-		<jar jarfile="${buildDir}/${artifactId}-${ver}-sources.jar" basedir="${srcDir}"/>
+		<jar jarfile="${buildDir}/${artifactId}-${version}.jar" basedir="${classDir}"/>
+		<jar jarfile="${buildDir}/${artifactId}-${version}-sources.jar" basedir="${srcDir}"/>
 	</target>
 
 
