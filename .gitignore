@@ -1,4 +1,5 @@
 *.class
-target/
 .apt_generated/
 build/classes
+target/*
+!*.jar

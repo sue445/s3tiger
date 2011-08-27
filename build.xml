@@ -38,5 +38,4 @@
 		<jar jarfile="${buildDir}/${artifactId}-${version}-sources.jar" basedir="${srcDir}"/>
 	</target>
 
-
 </project>
