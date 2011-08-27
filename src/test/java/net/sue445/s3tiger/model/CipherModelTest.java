@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import net.sue445.s3tiger.Slim3;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slim3.datastore.Datastore;
@@ -21,6 +22,7 @@ public class CipherModelTest extends AppEngineTestCase {
 		assertThat(model, is(notNullValue()));
 	}
 
+	@Ignore
 	@Test
 	public void putAndGet() throws Exception {
 		Key key = Datastore.createKey(CipherModel.class, "id");

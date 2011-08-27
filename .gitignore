@@ -1,2 +1,4 @@
 *.class
 target/
+.apt_generated/
+build/classes
