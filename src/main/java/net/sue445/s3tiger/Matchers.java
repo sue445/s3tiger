@@ -9,7 +9,7 @@ import net.sue445.s3tiger.matcher.OrderMatcher;
 import org.hamcrest.Matcher;
 
 /**
- * 汎用Matcherクラス
+ * tiny useful Matcher
  * @author sue445
  *
  */
