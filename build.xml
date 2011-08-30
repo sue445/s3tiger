@@ -1,54 +1,20 @@
-<project name="s3tiger" default="dist" basedir=".">
+<project name="s3tiger" default="install" basedir=".">
 
-	<property file="build.properties" />
-	<property name="classDir" value="${buildDir}/classes"/>
-
-	<path id="project.classpath">
-		<pathelement path="${classDir}" />
-		<fileset dir="${libDir}">
-			<include name="**/*.jar" />
-			<exclude name="ktrwjr.jar"/>
-		</fileset>
-	</path>
-	<property name="classpath" refid="project.classpath"/>
-
-	<target name="info">
-		<echo message="groupId=${groupId}"/>
-		<echo message="artifactId=${artifactId}"/>
-		<echo message="ver=${ver}"/>
-		<echo message="srcDir=${srcDir}"/>
-		<echo message="libDir=${libDir}"/>
-		<echo message="buildDir=${buildDir}"/>
-		<echo message="classDir=${classDir}"/>
-		<echo message="classpath=${classpath}"/>
-	</target>
-
-	<target name="clean">
-		<delete dir="${buildDir}" failonerror="false"/>
-		<mkdir dir="${buildDir}"/>
-	</target>
-
-	<target name="compile">
-		<mkdir dir="${classDir}"/>
-		<javac srcdir="${srcDir}" destdir="${classDir}" classpath="${classpath}"
-			encoding="UTF-8" target="1.6" source="1.6">
-		</javac>
-	</target>
-
-	<target name="dist" depends="info,clean,compile">
-		<jar jarfile="${buildDir}/${artifactId}-${version}.jar" basedir="${classDir}"/>
-		<jar jarfile="${buildDir}/${artifactId}-${version}-sources.jar" basedir="${srcDir}"/>
-	</target>
-
-	<target name="install_to_maven" depends="dist">
+	<target name="install">
 		<exec executable="mvn">
-			<arg value="install:install-file"/>
-			<arg value="-DgroupId=${groupId}"/>
-			<arg value="-DartifactId=${artifactId}"/>
-			<arg value="-Dversion=${version}"/>
-			<arg value="-Dpackaging=jar"/>
-			<arg value="-Dfile=${buildDir}/${artifactId}-${version}.jar"/>
-			<arg value="-DgeneratePom=true"/>
+			<arg line="clean package install"/>
 		</exec>
+		<copy todir="../s3tiger-test/war/WEB-INF/lib">
+			<fileset dir="target">
+				<include name="s3tiger-*.jar"/>
+				<exclude name="s3tiger-*-sources.jar"/>
+				<exclude name="s3tiger-*-tests.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="../s3tiger-test/war/WEB-INF/classes">
+			<fileset dir="target/test-classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</copy>
 	</target>
 </project>

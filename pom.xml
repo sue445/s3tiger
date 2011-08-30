@@ -109,19 +109,8 @@
   </dependencies>
   <build>
     <finalName>${artifactId}-${version}</finalName>
-    <directory>target</directory>
-    <outputDirectory>target/classes</outputDirectory>
+    <outputDirectory>${generated.war}/WEB-INF/classes</outputDirectory>
     <testOutputDirectory>target/test-classes</testOutputDirectory>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <excludes>
-          <exclude>logging.properties</exclude>
-        </excludes>
-      </resource>
-    </resources>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -151,7 +140,7 @@
           <execution>
             <phase>generate-sources</phase>
             <goals>
-              <goal>add-source</goal>
+              <goal>add-test-source</goal>
             </goals>
             <configuration>
               <sources>
@@ -230,12 +219,14 @@
                 <include>**/slim3-*.jar</include>
               </includes>
             </fileset>
+            <!--
             <fileset>
               <directory>${generated.src}</directory>
               <includes>
                 <include>**/*.*</include>
               </includes>
             </fileset>
+            -->
 	    <!--
             <fileset>
               <directory>${eclipse.lib}</directory>
@@ -334,6 +325,7 @@ ormEnhancementInclusions=
         <version>2.2</version>
         <executions>
           <execution>
+            <phase>package</phase>
             <goals>
               <goal>test-jar</goal>
             </goals>
