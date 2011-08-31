@@ -85,14 +85,13 @@ S3 Tigerを使いたいテストクラスには @RunWith(Slim3.class) をつけ�
 -----------------------------
 5. 使い方
 target/s3tiger-xxx.jarをwar/WEB-INF/libに配置してビルドパスに追加します。
+Mavenリポジトリには公開していないため、Mavenを使いたい場合には手動でインストールしてください。
+（build.xmlのinstallタスクでもOKです）
 
 -----------------------------
-6. 仕様
+6. 他の仕様
 ・Eclipseで動かす時にはappengine-web.xmlの<system-properties>を自動的にシステムプロパティとして設定します。
 　（システムプロパティを設定していないとModelに @Attribute(cipher = true) がついている場合にテストが失敗するため）
-・jarのビルドにはbuild.xmlのdistタスクを使ってください
-　（ktrwjrをデプロイする関係でsrc/mainとsrc/test/の出力先を同じにしてるため
-　　そのままmvn packageするとテストコードもjarに含まれてしまう・・・）
 
 -----------------------------
 7. おまけ1

@@ -4,6 +4,9 @@
 		<exec executable="mvn">
 			<arg line="clean package install"/>
 		</exec>
+	</target>
+
+	<target name="copyjar" depends="install">
 		<copy todir="../s3tiger-test/war/WEB-INF/lib">
 			<fileset dir="target">
 				<include name="s3tiger-*.jar"/>
