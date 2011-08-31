@@ -21,7 +21,7 @@ public class SomeTest{
 	}
 
 	@Test
-	public void runOnlyDevelopment(){
+	public void ignoreOnlyDevelopment(){
 		if(AppEngineUtil.isDevelopment()){
 			return;
 		}
@@ -47,7 +47,7 @@ public class SomeTest{
 
 	@IgnoreDevelopment
 	@Test
-	public void runOnlyDevelopment(){
+	public void ignoreOnlyDevelopment(){
 		// 開発サーバだけでは動かしたくないテスト
 	}
 }
