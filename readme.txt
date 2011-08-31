@@ -22,10 +22,10 @@ public class SomeTest{
 
 	@Test
 	public void runOnlyDevelopment(){
-		if(!AppEngineUtil.isDevelopment()){
+		if(AppEngineUtil.isDevelopment()){
 			return;
 		}
-		// 開発サーバだけで動かしたいテスト
+		// 開発サーバだけでは動かしたくないテスト
 	}
 }
 
