@@ -1,4 +1,5 @@
 <project name="s3tiger" default="install" basedir=".">
+	<property name="war.dir" value="../s3tiger-test/war"/>
 
 	<target name="install">
 		<exec executable="mvn">
@@ -6,17 +7,27 @@
 		</exec>
 	</target>
 
-	<target name="copyjar" depends="install">
-		<copy todir="../s3tiger-test/war/WEB-INF/lib">
+	<target name="clean">
+		<delete>
+			<fileset dir="${war.dir}/WEB-INF/lib" includes="s3tiger-*.jar"/>
+		</delete>
+		<delete dir="${war.dir}/WEB-INF/classes"/>
+	</target>
+
+	<target name="copyjar" depends="install,clean">
+		<copy todir="${war.dir}/WEB-INF/lib">
 			<fileset dir="target">
 				<include name="s3tiger-*.jar"/>
 				<exclude name="s3tiger-*-sources.jar"/>
 				<exclude name="s3tiger-*-tests.jar"/>
 			</fileset>
 		</copy>
-		<copy todir="../s3tiger-test/war/WEB-INF/classes">
+		<copy todir="${war.dir}/WEB-INF/classes">
 			<fileset dir="target/test-classes">
 				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="src/main/resources">
+				<include name="logging.properties"/>
 			</fileset>
 		</copy>
 	</target>
