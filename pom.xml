@@ -3,7 +3,7 @@
   <groupId>net.sue445</groupId>
   <artifactId>s3tiger</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <properties>
     <slim3.version>1.0.13</slim3.version>
     <appengine.version>1.5.3</appengine.version>
@@ -11,6 +11,16 @@
     <generated.war>war</generated.war>
     <eclipse.lib>eclipse.lib</eclipse.lib>
   </properties>
+  <distributionManagement>
+    <repository>
+      <id>repo</id>
+      <url>http://github.com/sue445/maven-repo/s3tiger/master/release</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshot-repo</id>
+      <url>http://github.com/xue445/maven-repo/s3tiger/master/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <repositories>
     <repository>
       <id>maven.seasar.org</id>
@@ -230,14 +240,14 @@
               </includes>
             </fileset>
             -->
-	    <!--
+      <!--
             <fileset>
               <directory>${eclipse.lib}</directory>
               <includes>
                 <include>slim3-gen-*.jar</include>
               </includes>
             </fileset>
-	    -->
+      -->
           </filesets>
         </configuration>
       </plugin>
