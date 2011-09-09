@@ -1,2 +1,5 @@
+0.0.2
+	[issue 2] junit: compile -> provided
+
 0.0.1
 	first release
