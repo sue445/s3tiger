@@ -14,11 +14,11 @@
   <distributionManagement>
     <repository>
       <id>repo</id>
-      <url>http://github.com/sue445/maven-repo/s3tiger/master/release</url>
+      <url>http://raw.github.com/sue445/maven-repo/master/release</url>
     </repository>
     <snapshotRepository>
       <id>snapshot-repo</id>
-      <url>http://github.com/xue445/maven-repo/s3tiger/master/snapshots</url>
+      <url>http://raw.github.com/xue445/maven-repo/master/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
   <repositories>
