@@ -1,6 +1,6 @@
 <project name="s3tiger" default="install" basedir=".">
 	<property name="war.dir" value="../s3tiger-test/war"/>
-	<property name="repo.dir" value="/Users/sue445/dev/maven-repo"/>
+	<property name="repo.dir" value="/Users/sue445/dev/maven"/>
 
 	<target name="install">
 		<exec executable="mvn">
@@ -33,15 +33,9 @@
 		</copy>
 	</target>
 
-	<target name="deploy-snapshot">
+	<target name="deploy">
 		<exec executable="mvn">
-			<arg line="-DaltDeploymentRepository=snapshot-repo::default::file:${repo.dir}/snapshots clean deploy"/>
-		</exec>
-	</target>
-
-	<target name="deploy-release">
-		<exec executable="mvn">
-			<arg line="-DaltDeploymentRepository=snapshot-repo::default::file:${repo.dir}/release clean deploy"/>
+			<arg line="-DaltDeploymentRepository=snapshot-repo::default::file:${repo.dir} clean deploy"/>
 		</exec>
 	</target>
 </project>

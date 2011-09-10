@@ -14,12 +14,8 @@
   <distributionManagement>
     <repository>
       <id>repo</id>
-      <url>http://raw.github.com/sue445/maven-repo/master/release</url>
+      <url>http://sue445.github.com/maven/</url>
     </repository>
-    <snapshotRepository>
-      <id>snapshot-repo</id>
-      <url>http://raw.github.com/xue445/maven-repo/master/snapshots</url>
-    </snapshotRepository>
   </distributionManagement>
   <repositories>
     <repository>
