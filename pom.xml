@@ -5,8 +5,8 @@
   <packaging>jar</packaging>
   <version>0.0.2</version>
   <properties>
-    <slim3.version>1.0.14</slim3.version>
-    <appengine.version>1.5.5</appengine.version>
+    <slim3.version>1.0.15</slim3.version>
+    <appengine.version>1.6.0</appengine.version>
     <generated.src>.apt_generated</generated.src>
     <generated.war>war</generated.war>
     <eclipse.lib>eclipse.lib</eclipse.lib>

@@ -6,8 +6,8 @@
 	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.14/slim3-1.0.14.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.15/slim3-1.0.15.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/appengine-java-sdk-1.5.5"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/appengine-java-sdk-1.6.0"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
