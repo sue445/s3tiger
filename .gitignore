@@ -1,6 +1,10 @@
-**/.DS_Store
+.DS_Store
 *.class
 .apt_generated/
+
 build/classes
-target/*
 !*.jar
+
+site/
+bin/
+target/
