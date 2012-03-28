@@ -387,6 +387,14 @@ ormEnhancementInclusions=
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>false</downloadJavadocs>
+          <useProjectReferences>false</useProjectReferences>
+        </configuration>
+      </plugin>
     </plugins>
   </reporting>
 </project>
