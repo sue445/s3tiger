@@ -63,13 +63,11 @@
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
       <version>${appengine.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-labs</artifactId>
       <version>${appengine.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.slim3</groupId>
@@ -251,6 +249,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
         <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>false</downloadJavadocs>
+          <useProjectReferences>false</useProjectReferences>
           <excludes>
             <exclude>org.slim3:slim3-gen</exclude>
             <exclude>com.google.appengine:appengine-api-1.0-sdk</exclude>
@@ -386,14 +387,6 @@ ormEnhancementInclusions=
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>false</downloadJavadocs>
-          <useProjectReferences>false</useProjectReferences>
-        </configuration>
       </plugin>
     </plugins>
   </reporting>
