@@ -20,7 +20,7 @@ import org.slim3.util.WrapRuntimeException;
  * }
  * </pre>
  * @author sue445
- *
+ * @since 0.0.3
  */
 public class AppEngineResource extends ExternalResource{
 	public AppEngineTester tester = new AppEngineTester();
