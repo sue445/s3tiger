@@ -9,7 +9,7 @@ import com.google.apphosting.api.ApiProxy;
 /**
  * user login test.
  * this rule required {@link RuleChain}.
- * please use {@link AppEngineResource} or {@link ControillerResource}.
+ * please use {@link AppEngineResource} or {@link ControllerResource}.
  * <pre>
  * public class SomeServiceTest{
  *     &#064;Rule

@@ -4,9 +4,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.slim3.memcache.Memcache;
 
-public class ControillerResourceTest {
+public class ControllerResourceTest {
 	@Rule
-	public ControillerResource resource = new ControillerResource(ControillerResourceTest.class);
+	public ControllerResource resource = new ControllerResource(ControllerResourceTest.class);
 
 	@Test
 	public void test() {

@@ -12,7 +12,7 @@ import org.slim3.util.WrapRuntimeException;
  * <pre>
  * public class SomeControllerTest{
  *     &#064;Rule
- *     public ControillerResource resource = new ControillerResource(SomeControllerTest.class);
+ *     public ControllerResource resource = new ControllerResource(SomeControllerTest.class);
  *
  *     &#064;Test
  *     public void test(){
@@ -22,10 +22,10 @@ import org.slim3.util.WrapRuntimeException;
  * @author sue445
  * @since 0.0.3
  */
-public class ControillerResource extends ExternalResource{
+public class ControllerResource extends ExternalResource{
 	public ControllerTester tester;
 
-	public ControillerResource(Class<?> testClass) {
+	public ControllerResource(Class<?> testClass) {
 		tester = new ControllerTester(testClass);
 	}
 
