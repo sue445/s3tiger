@@ -4,6 +4,7 @@
   <artifactId>s3tiger</artifactId>
   <packaging>jar</packaging>
   <version>0.0.3</version>
+  <name>s3tiger</name>
   <properties>
     <slim3.version>1.0.15</slim3.version>
     <appengine.version>1.6.0</appengine.version>
@@ -366,6 +367,9 @@ ormEnhancementInclusions=
           <charset>UTF-8</charset>
           <links>
             <link>http://docs.oracle.com/javase/6/docs/api/</link>
+            <link>http://code.google.com/intl/en/appengine/docs/java/javadoc/</link>
+            <link>http://slim3.googlecode.com/svn/trunk/slim3/javadoc/</link>
+            <link>http://kentbeck.github.com/junit/javadoc/latest/</link>
           </links>
         </configuration>
       </plugin>
