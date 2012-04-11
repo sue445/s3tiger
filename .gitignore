@@ -13,8 +13,8 @@ site/
 bin/
 target/
 jcoverage.ser
+war/WEB-INF/classes/
 
 # ktrwjr is not exists at maven
 *.jar
 !ktrwjr.jar
-
