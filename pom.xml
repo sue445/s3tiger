@@ -3,7 +3,7 @@
   <groupId>net.sue445</groupId>
   <artifactId>s3tiger</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.3</version>
+  <version>0.0.4-SNAPSHOT</version>
   <name>s3tiger</name>
   <properties>
     <slim3.version>1.0.15</slim3.version>
