@@ -43,4 +43,15 @@ public class UserLoginTest{
 		}
 	}
 
+	public static class WhenNotLogined{
+		@Rule
+		public AppEngineResource resource = new AppEngineResource();
+
+		@Test
+		public void isLogin() {
+			UserService userService = UserServiceFactory.getUserService();
+			assertThat(userService.isUserLoggedIn(), is(false));
+		}
+	}
+
 }
