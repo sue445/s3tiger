@@ -3,6 +3,7 @@ package net.sue445.s3tiger.rules;
 import org.junit.rules.ExternalResource;
 import org.junit.rules.RuleChain;
 import org.slim3.tester.TestEnvironment;
+import org.slim3.util.AppEngineUtil;
 
 import com.google.apphosting.api.ApiProxy;
 
@@ -48,6 +49,11 @@ public class UserLogin extends ExternalResource {
 
 	@Override
 	protected void before() throws Throwable {
+		if(AppEngineUtil.isProduction()){
+			// not loaded TestEnvironment on production
+			return;
+		}
+
 		TestEnvironment environment = (TestEnvironment) ApiProxy.getCurrentEnvironment();
 		if(environment == null){
 			throw new NullPointerException("Not initialized TestEnvironment. please use RuleChain");
