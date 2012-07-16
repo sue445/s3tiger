@@ -1,6 +1,6 @@
 <project name="s3tiger" default="install" basedir=".">
 	<property name="war.dir" value="../s3tiger-test/war"/>
-	<property name="repo.dir" value="/Users/sue445/dev/maven"/>
+	<property name="repo.dir" value="/Users/sue445/dev/workspace/maven"/>
 
 	<target name="install">
 		<exec executable="mvn">
