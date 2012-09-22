@@ -5,6 +5,8 @@ https://github.com/sue445/s3tiger/wiki
 http://sue445.github.com/s3tiger/site/apidocs/index.html
 
 # History
+* 0.0.5
+ * impl Rule (HighReplicationDatastore)
 * 0.0.4
  * Tested on Slim3 1.0.16
  * add test case
