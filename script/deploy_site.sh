@@ -14,8 +14,8 @@ git clone ${REPO_URL} --branch ${BRANCH} ${TMP_DIR}
 
 cd ${TMP_DIR}
 
-rm -rf ./site/*
-cp -r ../site/* ./site/
+rm -rf ./site/
+cp -r ../site/ .
 
 git add .
 git commit -am "build by jenkins : ${BUILD_NUMBER} ${BUILD_ID}"
