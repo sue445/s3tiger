@@ -12,6 +12,7 @@ build/classes
 site/
 bin/
 target/
+tmp/
 jcoverage.ser
 war/WEB-INF/classes/
 
