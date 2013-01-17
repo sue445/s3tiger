@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AppEngineWebConfigUtil.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">s3tiger</a> &gt; <a href="index.html" class="el_package">net.sue445.s3tiger.internal</a> &gt; <span class="el_source">AppEngineWebConfigUtil.java</span></div><h1>AppEngineWebConfigUtil.java</h1><pre class="source lang-java linenums">package net.sue445.s3tiger.internal;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+import org.slim3.util.WrapRuntimeException;
+
+public final class AppEngineWebConfigUtil {
+	private static final String FILE_APPENGINE_WEB_XML = &quot;war/WEB-INF/appengine-web.xml&quot;;
+	private static final String XPATH_SYSTEM_PROPERTIES = &quot;/appengine-web-app/system-properties/property&quot;;
+
+
+<span class="nc" id="L16">	private AppEngineWebConfigUtil(){</span>
+
+<span class="nc" id="L18">	}</span>
+
+	/**
+	 * get system properties from appengine-web.xml
+	 * @return
+	 */
+	public static Map&lt;String, String&gt; getSystemProperties(){
+<span class="fc" id="L25">		return readSystemPropertiesMap(FILE_APPENGINE_WEB_XML);</span>
+	}
+
+	/**
+	 * @param filepath
+	 * @return
+	 */
+	private static Map&lt;String, String&gt; readSystemPropertiesMap(String filepath){
+<span class="fc" id="L33">		return readXmlBase(</span>
+				filepath,
+<span class="fc" id="L35">				new Callback&lt;Map&lt;String, String&gt;&gt;() {</span>
+					@Override
+					public Map&lt;String, String&gt; execute(XPathEvaluator evalutor) {
+<span class="fc" id="L38">						return evalutor.getProperties(XPATH_SYSTEM_PROPERTIES, null);</span>
+					}
+				});
+	}
+
+	/**
+	 * @author sue445
+	 * @param &lt;T&gt;
+	 */
+	public interface Callback&lt;T&gt;{
+		/**
+		 * read xml
+		 * @param evalutor
+		 * @return
+		 */
+		T execute(XPathEvaluator evalutor);
+	}
+
+	/**
+	 *
+	 * @param filepath
+	 * @param callback
+	 * @return
+	 */
+	private static &lt;T&gt; T readXmlBase(String filepath, Callback&lt;T&gt; callback) {
+<span class="fc" id="L63">		InputStream stream = null;</span>
+
+		try {
+<span class="fc" id="L66">			stream = new BufferedInputStream(new FileInputStream(filepath));</span>
+<span class="fc" id="L67">			XPathEvaluator evalutor = new XPathEvaluator(stream);</span>
+<span class="fc" id="L68">			return callback.execute(evalutor);</span>
+
+<span class="nc" id="L70">		} catch(Exception e){</span>
+<span class="nc" id="L71">			throw new WrapRuntimeException(e);</span>
+
+		} finally{
+<span class="pc bpc" id="L74" title="3 of 4 branches missed.">			if(stream != null){</span>
+				try {
+<span class="pc" id="L76">					stream.close();</span>
+<span class="nc" id="L77">				} catch (IOException e) {</span>
+<span class="pc" id="L78">				}</span>
+			}
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.10.201208310627</span></div></body></html>

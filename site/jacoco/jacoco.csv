@@ -1,0 +1,23 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+s3tiger,net.sue445.s3tiger.matcher,EmptyStringMatcher,5,15,0,4,2,3,1,4,1,2
+s3tiger,net.sue445.s3tiger.matcher,OrderMatcher,8,72,1,9,3,24,2,8,1,4
+s3tiger,net.sue445.s3tiger.matcher,ComparableOrderMatcher,8,64,1,9,3,22,2,8,1,4
+s3tiger,net.sue445.s3tiger.rules,UserLogin,6,30,2,2,2,12,2,3,0,3
+s3tiger,net.sue445.s3tiger.rules,AppEngineResource,6,17,0,0,2,7,0,3,0,3
+s3tiger,net.sue445.s3tiger.rules,ControllerResource,6,18,0,0,2,8,0,3,0,3
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator.new Iterable() {...},0,14,0,0,0,2,0,2,0,2
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator.new Iterable() {...},14,0,0,0,2,0,2,0,2,0
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator.new XPathVariableResolver() {...},14,0,0,0,2,0,2,0,2,0
+s3tiger,net.sue445.s3tiger.internal,IgnoreType.Strategy.new IgnoreType.Strategy() {...},1,11,1,1,0,2,1,2,0,2
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator,78,78,6,4,18,20,8,5,4,4
+s3tiger,net.sue445.s3tiger.internal,IgnoreType.Strategy.new IgnoreType.Strategy() {...},0,8,0,0,0,2,0,2,0,2
+s3tiger,net.sue445.s3tiger.internal,IgnoreType.Strategy.new IgnoreType.Strategy() {...},0,8,0,0,0,2,0,2,0,2
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator.1.new Iterator() {...},5,32,0,2,1,4,1,4,1,3
+s3tiger,net.sue445.s3tiger.internal,IgnoreType.Strategy.new IgnoreType.Strategy() {...},0,8,0,0,0,2,0,2,0,2
+s3tiger,net.sue445.s3tiger.internal,XPathEvaluator.2.new Iterator() {...},38,0,2,0,5,0,5,0,4,0
+s3tiger,net.sue445.s3tiger.internal,AppEngineWebConfigUtil,19,36,3,1,5,9,3,3,1,3
+s3tiger,net.sue445.s3tiger.internal,AppEngineWebConfigUtil.new AppEngineWebConfigUtil.Callback() {...},0,8,0,0,0,2,0,2,0,2
+s3tiger,net.sue445.s3tiger.internal,IgnoreType.Strategy,12,49,0,0,1,5,3,2,3,2
+s3tiger,net.sue445.s3tiger.internal,IgnoreType,13,136,0,16,1,29,3,13,3,5
+s3tiger,net.sue445.s3tiger,Slim3,8,115,2,10,1,36,2,14,0,10
+s3tiger,net.sue445.s3tiger,Matchers,3,14,0,0,2,5,1,5,1,5
