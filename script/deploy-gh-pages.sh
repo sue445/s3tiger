@@ -16,6 +16,7 @@ cd       "${WORKSPACE}/${TMP_DIR}"
 if [ -e "${WORKSPACE}/${TMP_DIR}/${REPO_DIR}" ]; then
   cd "${WORKSPACE}/${TMP_DIR}/${REPO_DIR}"
   git checkout ${BRANCH}
+  git pull origin ${BRANCH}
 else
   git clone ${REPO_URL} --branch ${BRANCH} ${REPO_DIR}
   cd "${WORKSPACE}/${TMP_DIR}/${REPO_DIR}"
