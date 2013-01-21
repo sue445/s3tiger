@@ -1,10 +1,11 @@
-# wiki
+# s3tiger [![Build Status](http://ci.sue445.net/jenkins/job/s3tiger/badge/icon)](http://ci.sue445.net/jenkins/job/s3tiger/)
+## wiki
 https://github.com/sue445/s3tiger/wiki
 
-# JavaDoc
+## JavaDoc
 http://sue445.github.com/s3tiger/site/apidocs/index.html
 
-# History
+## History
 * 0.0.4
  * Tested on Slim3 1.0.16
  * add test case
