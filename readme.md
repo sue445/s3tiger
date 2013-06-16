@@ -1,4 +1,4 @@
-# s3tiger [![Build Status](http://ci.sue445.net/jenkins/job/s3tiger/badge/icon)](http://ci.sue445.net/jenkins/job/s3tiger/)
+# s3tiger [![Build Status](https://travis-ci.org/sue445/s3tiger.png)](https://travis-ci.org/sue445/s3tiger)
 ## wiki
 https://github.com/sue445/s3tiger/wiki
 
